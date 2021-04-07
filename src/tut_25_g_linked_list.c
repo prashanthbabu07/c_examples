@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <assert.h>
 
-typedef struct node {
+typedef struct node
+{
 	void *data;
 	struct node *nextnode;
 } node;
 
-typedef struct linked_list {
+typedef struct linked_list
+{
 	node *head;
 	node *tail;
 	int elementsize;
@@ -19,7 +21,7 @@ void init_linkedlist(linkedlist *root, int elementsize)
 {
 
 	assert(elementsize > 0);
-	
+
 	root->head = NULL;
 	root->tail = NULL;
 	root->elementsize = elementsize;
@@ -34,10 +36,13 @@ void append_linkedlist(linkedlist *root, void *data)
 
 	memcpy(newnode->data, data, root->elementsize);
 
-	if(root->logicallength == 0) {
+	if (root->logicallength == 0)
+	{
 		root->head = newnode;
 		root->tail = newnode;
-	} else {
+	}
+	else
+	{
 		root->tail->nextnode = newnode;
 		root->tail = newnode;
 	}
@@ -49,19 +54,19 @@ void int_display_linkedlist(node *n)
 	printf("{|%d|%p|}-->", *(int *)n->data, n);
 }
 
-void display_linkedlist(linkedlist *root, void(*display)(node *))
+void display_linkedlist(linkedlist *root, void (*display)(node *))
 {
 
 	assert(display != NULL);
 
 	node *n = root->head;
 
-	while(n!=NULL) {
+	while (n != NULL)
+	{
 		display(n);
 		n = n->nextnode;
 	}
 	printf("\n");
-	
 }
 
 void add_ints_list()
@@ -72,12 +77,12 @@ void add_ints_list()
 	linkedlist root;
 	init_linkedlist(&root, sizeof(int));
 
-	for(i=0; i<numbers; i++) {
+	for (i = 0; i < numbers; i++)
+	{
 		append_linkedlist(&root, &i);
 	}
 
 	display_linkedlist(&root, int_display_linkedlist);
-
 }
 
 void main()
@@ -85,6 +90,3 @@ void main()
 	printf("linked list...\n");
 	add_ints_list();
 }
-
-
-
