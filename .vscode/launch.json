@@ -15,7 +15,8 @@
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb",
-			"preLaunchTask": "C/C++: clang build active file"
+			"preLaunchTask": "C/C++: clang build active file",
+			"miDebuggerPath": "/Volumes/Sandisk/Applications/Xcode.app/Contents/SharedFrameworks/lldb-mi"
 		}
 	]
 }
